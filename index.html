@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/dark.css" />
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="app">
+        <header class="app-header">
+            <h1 class="app-title">Weather Forecast</h1>
+            <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode" title="Appearance">
+                <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">☀</span>
+                <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">☾</span>
+            </button>
+        </header>
+
+        <main class="card">
+            <form class="weather-form">
+                <label class="field-label" for="search">Find weather by location</label>
+
+                <div class="temp-unit-row">
+                    <span class="temp-unit-label" aria-hidden="true">°F</span>
+                    <sl-switch id="unit-switch" name="celsius">°C</sl-switch>
+                </div>
+
+                <sl-input id="search" name="location" placeholder="Enter city or place" size="medium" pill clearable>
+                    <sl-icon slot="prefix" name="search"></sl-icon>
+                    <sl-icon name="x-lg"></sl-icon>
+
+                    
+                </sl-input>
+
+                <!-- <div class="form-actions">
+                    <sl-button type="submit" variant="primary" size="medium">Enter</sl-button>
+                    <sl-button type="reset" variant="neutral" size="medium" outline>Reset</sl-button>
+                </div> -->
+            </form>
+        </main>
+    </div>
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

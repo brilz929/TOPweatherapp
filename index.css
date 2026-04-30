@@ -1,0 +1,152 @@
+/* Layout colors use Shoelace tokens so the page matches sl-input, buttons, and switches. */
+
+:root {
+    color-scheme: light;
+    --bg: var(--sl-color-neutral-100);
+    --surface: var(--sl-color-neutral-0);
+    --text: var(--sl-color-neutral-900);
+    --text-muted: var(--sl-color-neutral-600);
+    --border: var(--sl-color-neutral-200);
+    --shadow: var(--sl-shadow-medium);
+    --header-btn-bg: var(--sl-color-neutral-0);
+    --header-btn-border: var(--sl-color-neutral-200);
+    --header-btn-hover: var(--sl-color-neutral-100);
+}
+
+/* Dark: Shoelace sets --sl-* on .sl-theme-dark; we map layout to the same palette. */
+html.sl-theme-dark[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: var(--sl-color-neutral-0);
+    --surface: var(--sl-color-neutral-50);
+    --text: var(--sl-color-neutral-900);
+    --text-muted: var(--sl-color-neutral-600);
+    --border: var(--sl-color-neutral-200);
+    --shadow: var(--sl-shadow-large);
+    --header-btn-bg: var(--sl-color-neutral-50);
+    --header-btn-border: var(--sl-color-neutral-200);
+    --header-btn-hover: var(--sl-color-neutral-100);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: var(--sl-font-sans), system-ui, sans-serif;
+    font-size: var(--sl-font-size-medium);
+    line-height: var(--sl-line-height-normal);
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+}
+
+.app {
+    max-width: 420px;
+    margin: 0 auto;
+    padding: clamp(1.25rem, 4vw, 2rem) 1.25rem 2rem;
+}
+
+.app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.app-title {
+    margin: 0;
+    font-size: clamp(1.35rem, 4vw, 1.6rem);
+    font-weight: var(--sl-font-weight-bold);
+    letter-spacing: var(--sl-letter-spacing-dense);
+}
+
+.theme-toggle {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    border-radius: var(--sl-border-radius-pill);
+    border: 1px solid var(--header-btn-border);
+    background: var(--header-btn-bg);
+    color: var(--text);
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: background var(--sl-transition-fast) ease,
+        transform var(--sl-transition-fast) ease;
+}
+
+.theme-toggle:hover {
+    background: var(--header-btn-hover);
+}
+
+.theme-toggle:active {
+    transform: scale(0.96);
+}
+
+.theme-toggle:focus-visible {
+    outline: var(--sl-focus-ring);
+    outline-offset: var(--sl-focus-ring-offset);
+}
+
+.theme-toggle__icon {
+    font-size: 1.15rem;
+    line-height: 1;
+}
+
+html[data-theme="light"] .theme-toggle__icon--moon,
+html[data-theme="dark"] .theme-toggle__icon--sun {
+    display: none;
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--sl-border-radius-x-large);
+    padding: var(--sl-spacing-large);
+    box-shadow: var(--shadow);
+}
+
+.weather-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sl-spacing-large);
+}
+
+.field-label {
+    font-size: var(--sl-font-size-small);
+    font-weight: var(--sl-font-weight-semibold);
+    color: var(--text-muted);
+}
+
+.temp-unit-row {
+    display: flex;
+    align-items: center;
+    gap: var(--sl-spacing-small);
+}
+
+/* .temp-unit-label {
+    font-size: var(--sl-font-size-small);
+    font-weight: var(--sl-font-weight-semibold);
+    color: var(--text-muted);
+    min-width: 1.75rem;
+} */
+
+.form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sl-spacing-small);
+    margin-top: var(--sl-spacing-2x-small);
+}
+
+.form-actions sl-button {
+    flex: 1;
+    min-width: 6rem;
+}

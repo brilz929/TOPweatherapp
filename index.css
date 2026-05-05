@@ -37,7 +37,7 @@ body {
     margin: 0;
     min-height: 100vh;
     font-family: var(--sl-font-sans), system-ui, sans-serif;
-    font-size: var(--sl-font-size-medium);
+    font-size: var(--sl-font-size-small);
     line-height: var(--sl-line-height-normal);
     background: var(--bg);
     color: var(--text);
@@ -118,6 +118,7 @@ html[data-theme="dark"] .theme-toggle__icon--sun {
     display: flex;
     flex-direction: column;
     gap: var(--sl-spacing-large);
+    margin-bottom: var(--sl-spacing-large);
 }
 
 .field-label {
@@ -150,3 +151,93 @@ html[data-theme="dark"] .theme-toggle__icon--sun {
     flex: 1;
     min-width: 6rem;
 }
+
+/* #search-btn {
+    cursor: pointer;
+} */
+
+.weather-info {
+   display: flex;
+   flex-direction: column;
+}
+
+.weather-info-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.location-info-container {
+    display: flex;
+    align-items: center;
+    gap: var(--sl-spacing-x-small);
+}
+
+.weather-summary-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.weather-logo {
+    display: flex;
+    align-items: center;
+}
+
+.weather-icon {
+   width: 80px;
+   height: 80px;
+}
+
+.forecast-heading {
+    margin: var(--sl-spacing-large) 0 var(--sl-spacing-small);
+    font-size: var(--sl-font-size-small);
+    font-weight: var(--sl-font-weight-semibold);
+    color: var(--text-muted);
+}
+
+sl-carousel.google-style-carousel {
+    --sl-color-neutral-200: transparent;
+    padding: 10px 0;
+}
+
+sl-carousel-item {
+    padding: 0 4px; /* Tight spacing between columns */
+}
+
+.forecast-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 4px;
+    background: transparent; 
+    border-radius: 12px;
+    transition: background 0.3s ease;
+    min-width: 70px;
+}
+
+.forecast-card.is-active {
+    background: rgba(255, 255, 255, 0.1); 
+}
+
+.forecast-card h5 {
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin: 0 0 8px 0;
+    color: #e8eaed; /* Light grey/white */
+}
+.forecast-card img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.forecast-temp-range {
+    display: flex;
+    gap: 6px;
+    font-size: 0.9rem;
+    margin-top: 8px;
+}
+
+.high-temp { color: #ffffff; font-weight: 600; }
+.low-temp { color: #9aa0a6; }

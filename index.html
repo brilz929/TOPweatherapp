@@ -1,47 +1,86 @@
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=location_on" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/light.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/themes/dark.css" />
     <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
-    <div class="app">
+    <main class="app">
         <header class="app-header">
             <h1 class="app-title">Weather Forecast</h1>
-            <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode" title="Appearance">
+            <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark mode"
+                title="Appearance">
                 <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">☀</span>
                 <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">☾</span>
             </button>
         </header>
 
-        <main class="card">
+        <div class="card">
             <form class="weather-form">
                 <label class="field-label" for="search">Find weather by location</label>
 
                 <div class="temp-unit-row">
                     <span class="temp-unit-label" aria-hidden="true">°F</span>
+                    <!-- Shoelace switch for C/F toggle -->
                     <sl-switch id="unit-switch" name="celsius">°C</sl-switch>
                 </div>
 
-                <sl-input id="search" name="location" placeholder="Enter city or place" size="medium" pill clearable>
-                    <sl-icon slot="prefix" name="search"></sl-icon>
+                <sl-input id="search" name="location" placeholder="e.g. Austin, TX" size="medium" pill clearable>
+                    <sl-icon slot="prefix" name="search" id="search-btn"></sl-icon>
                     <sl-icon name="x-lg"></sl-icon>
-
-                    
                 </sl-input>
-
-                <!-- <div class="form-actions">
-                    <sl-button type="submit" variant="primary" size="medium">Enter</sl-button>
-                    <sl-button type="reset" variant="neutral" size="medium" outline>Reset</sl-button>
-                </div> -->
             </form>
-        </main>
-    </div>
 
+            <!-- Section is hidden (display: none) until weather data is loaded[cite: 2] -->
+            <section class="weather-info" style="display: none;">
+                <div class="weather-info-container">
+                    <div class="location-info-container">
+                        <span class="material-symbols-outlined">location_on</span>
+                        <h4 class="location-title"></h4>
+                    </div>
+                    <h5 class="current-date"></h5>
+                </div>
+
+                <div class="weather-summary-container">
+                    <div class="weather-logo">
+                        <img src="" alt="weather icon" class="weather-icon" style="display: none;">
+                        <h1 class="temp-text"></h1>
+                    </div>
+                    <div class="weather-conditions-container">
+                        <div id="precipitation">Precipitation: --</div>
+                        <div id="humidity">Humidity: --</div>
+                        <div id="wind">Wind: --</div>
+                    </div>
+                </div>
+
+                <div class="weather-forecast-carousel" id="forecast-section">
+                    <h3 class="forecast-heading">5-day outlook</h3>
+                    <sl-carousel 
+                        navigation 
+                        pagination 
+                        mouse-dragging 
+                        slides-per-page="4" 
+                        slides-per-move="1" 
+                        class="google-style-carousel">
+                    </sl-carousel>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Configuration and Scripts -->
+    <script src="config.example.js"></script>
+    <script src="config.local.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.1/cdn/shoelace.js"></script>
-    <script src="index.js"></script>
+    <script src="index.js" type="module"></script>
 </body>
+
 </html>
